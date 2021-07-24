@@ -1,7 +1,10 @@
 .calendar {
     box-sizing: border-box;
     font-size: 1rem;
-    max-width: 400px;
+    width: 90vw;
+    padding: 10px 20px;
+    /* max-width: 800px; */
+    margin: auto;
   }
   
   .calendar .header {
@@ -12,36 +15,54 @@
     color: var(--black);
     font-family: var(--font-book);
     font-weight: 700;
+    font-size: 3vw;
+    margin: 3% 0;
     display: flex;
   }
   
   .calendar .day-names {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
-    align-items: center;
+    align-items: center; */
+    /* width: 30%; */
+    font-size: 3vw;
+    border-bottom: 1px solid rebeccapurple;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(7, 1fr);
+    padding : 0 0 3% 0;
   }
   
   .calendar .body {
-    border: 1px solid var(--light-blue);
+    /* border: 3px solid #27506c; */
+    /* border-radius: 10px; */
+    display: grid;
+    grid-auto-flow: dense;
+    /* grid-template-rows: repeat(5, 1fr); */
+    justify-items: center;
+    grid-column-gap: 0px;
+    grid-template-columns: repeat(7, 1fr);
+
   }
   
-  .calendar .header .previous {
+  .calendar .header .next, .calendar .header .previous  {
     flex: 1;
+    cursor: pointer;
+  }
+
+  .calendar .header .previous {
     text-align: left;
-    margin-left: 1rem;
   }
   
   .calendar .header .next {
-    flex: 1;
     text-align: right;
-    margin-right: 1rem;
   }
   
   .calendar .week {
-    background-color: white;
-    width: calc(100% / 7);
+    /* background-color: white; */
+    /* width: calc(100% / 7); */
     height: 44px;
     line-height: 44px;
     text-align: center;
@@ -50,41 +71,122 @@
     font-weight: 400;
   }
   .calendar .week div {
-    width: 100%;
+    /* width: 100%; */
   }
   
   .calendar .day {
     position: relative;
-    width: calc(100% / 7);
-    height: 44px;
-    display: inline-block;
+    cursor: pointer;
+    /* width: calc(100% / 7); */
+    /* display: inline-block; */
     background-color: white;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    z-index: 1;
+    /* z-index: 1; */
     text-align: center;
+    padding: 50%;
+    border: 0px solid rebeccapurple;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    font-size: 2.5vw;
+    position: relative;
+
+  }
+
+  .calendar .meetings {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    right: 0;
+    text-align: left;
+    justify-content: flex-end;
+  }
+
+  .calendar .meetings label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 2% 5%;
+  }
+
+  .calendar .day:nth-child(7n) {
+    border-right-width: 1px;
+  }
+
+  .calendar .day-number {
+    position: absolute;
+    top: 2%;
+    left: 8%;
   }
   
-  .calendar .day div {
+  /* .calendar .day div {
     width: 54px;
     height: 44px;
-    position: relative;
     color: var(--black);
     z-index: 100;
     line-height: 44px;
-  }
+  } */
   
   .calendar .day div.before {
     color: var(--grey);
   }
   
-  .calendar .day div.selected {
-    background-color: var(--red);
-    color: var(--white);
-    font-weight: bold;
+  .calendar .selected {
+    background-color: rebeccapurple;
+    color: white;
+    /* font-weight: bold; */
   }
   
   .calendar .day div.today {
     background-color: var(--grey);
+  }
+
+  .modal {
+    position: absolute;
+    top: 5vmin;
+    right: 0;
+    left: 0;
+    width: 60vw;
+    margin: auto;
+    background: #fff;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    /* padding: 50px 0 10px 0; */
+    padding: 35px 20px 20px 20px;
+  }
+
+  .modal .meeting-container {
+    height: 60vmin;
+    overflow: auto;
+  }
+
+  .modal .meeting-box {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: rebeccapurple;
+    margin: 10px auto;
+    padding: 10px 5%;
+    border-radius: 6px;
+    font-size: 2vw;
+  }
+
+  .modal .meeting-box label {
+    margin: 2px 0;
+  }
+  
+  .modal .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: grey;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
   }
