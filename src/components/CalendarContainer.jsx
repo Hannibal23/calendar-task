@@ -10,9 +10,9 @@ const CalendarContainer = () => {
 
     const dictionary = data.meetings.reduce((acc, val) => {
         const date = moment(val.start).format("YYYY-MM-DD")
-        return { ...acc, [date]: [...(acc[date] ? acc[date] : []), val].sort(sorter) }
+        const dateKey = acc[date];
+        return {...acc, [date]: [...(dateKey ? dateKey : []), val].sort(sorter)}
     }, {})
-
     return (
         <>
             <MeetingsModal

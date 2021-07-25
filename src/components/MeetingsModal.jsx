@@ -5,9 +5,7 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 const MeetingsModal = ({ toggleModal, modalIsOpen, dataToShow }) => {
 
-  function closeModal() {
-    toggleModal();
-  }
+  const closeModal = () => toggleModal();
 
   const meetingMapper = () => dataToShow.map((val, index) => (
     <div className="meeting-box" key={`${val.meetingName}-${index}`}>
@@ -16,7 +14,6 @@ const MeetingsModal = ({ toggleModal, modalIsOpen, dataToShow }) => {
       <label>{`Meeting Room: ${val.meetingRoom}`}</label>
     </div>
   ))
-
 
   return (
     <div>

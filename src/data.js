@@ -9,6 +9,20 @@ const data = {
       "participants": []
     },
     {
+      "start": "2020-06-03T11:00:00.000Z",
+      "end": "2020-06-03T12:00:00.000Z",
+      "name": "Interview With A New Colleague",
+      "meetingRoom": "Vitosha",
+      "participants": []
+    },
+    {
+      "start": "2020-06-03T11:00:00.000Z",
+      "end": "2020-06-03T12:00:00.000Z",
+      "name": "Interview With A New Colleague",
+      "meetingRoom": "Vitosha",
+      "participants": []
+    },
+    {
       "start": "2020-06-03T14:00:00.000Z",
       "end": "2020-06-03T15:30:00.000Z",
       "name": "Daily Standup",

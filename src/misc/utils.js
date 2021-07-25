@@ -12,11 +12,11 @@ export const useModal = () => {
     }
 
     const toggleModal = () => setIsOpen(!modalIsOpen)
-  
-    return { modalIsOpen, toggleModal, showModal, dataToShow }
-  }
 
-  export const sorter = (a, b) => moment(a.start).format("hh") - moment(b.start).format("hh")
+    return { modalIsOpen, toggleModal, showModal, dataToShow }
+}
+
+export const sorter = (a, b) => moment(a.start).format("hh") - moment(b.start).format("hh")
 
 export const calendarSpread = 7;
 export const startDate = "2020-06";
@@ -34,3 +34,12 @@ export const renderDayNames = () => (
 )
 
 export const checkDay = (dayToCheck, date) => date.isSame(dayToCheck, "day") ? "selected" : "";
+export const meetingCheker = data => {
+    if (!data) return [];
+    return data.reduce((acc, val) => {
+        if (acc.some(({ meetingRoom, start }) => meetingRoom === val.meetingRoom && start === val.start)){
+            return acc;
+        } 
+        return [...acc, val];
+    }, []);
+}
